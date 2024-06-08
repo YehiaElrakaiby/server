@@ -1,4 +1,4 @@
-# AuthzForce Server (Community Edition)
+# AuthzForce Server
 
 [![FIWARE Security](https://nexus.lab.fiware.org/static/badges/chapters/security.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: GPL v3](https://img.shields.io/github/license/authzforce/server.svg)](https://www.gnu.org/licenses/gpl-3.0)

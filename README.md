@@ -204,6 +204,11 @@ Every release is packaged in various types of distribution and the installation 
 -   Other Linux distributions: `.tar.gz` for any Linux distribution. More info in the [documentation](#documentation);
 -   Docker image, installed/deployed with the usual docker container commands. See [dist/src/docker/README.md](dist/src/docker/README.md) for more info.
 
+I installed it using Maven
+```console
+mvn clean install -Ddependency-check.skip=true
+```
+
 For download links, please go to the specific
 [release page](https://github.com/authzforce/server/releases).
 

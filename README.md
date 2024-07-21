@@ -204,10 +204,55 @@ Every release is packaged in various types of distribution and the installation 
 -   Other Linux distributions: `.tar.gz` for any Linux distribution. More info in the [documentation](#documentation);
 -   Docker image, installed/deployed with the usual docker container commands. See [dist/src/docker/README.md](dist/src/docker/README.md) for more info.
 
-I installed it using Maven
+## Personal Installation
+- Maven Installation
 ```console
 mvn clean install -Ddependency-check.skip=true
 ```
+
+- Copy the webapp.war to Tomcat
+```
+cp -r /Volumes/2_Github/5_Personal/AuthZForce/Server/dist/target/authzforce-ce-server-12.0.2-SNAPSHOT/webapp/* /usr/local/tomcat11/webapps/authzforce/
+```
+
+- Verify Server Port (8080)
+```
+netstat -an | grep 8080
+lsof -iTCP:8080 -sTCP:LISTEN
+```
+
+- Update port used by Tomcat using the following command:
+```
+cd /usr/local/tomcat11/conf
+vi server.xml
+```
+Change the port from 8080 to 8081 if necessary. 
+```
+<Connector port="8081" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+```
+To update a file using vi, press `i` to enter insert mode, make the necessary changes, press `esc` to exit insert mode, and type `:wq` to save and exit the file.
+
+- Run Tomcat
+```
+cd /usr/local/tomcat11/bin
+./startup.sh
+```
+
+- Verify Deployment to Tomcat (Run AuthZForce)
+```
+http://localhost:8080/authzforce/
+cd /usr/local/tomcat11/logs
+less catalina.out
+```
+
+- Shutdown Tomcat
+```
+cd /usr/local/tomcat11/bin
+./shutdown.sh
+```
+
 
 For download links, please go to the specific
 [release page](https://github.com/authzforce/server/releases).
